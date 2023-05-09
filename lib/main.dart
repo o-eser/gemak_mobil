@@ -2,6 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gemak/inhwidget.dart';
+import 'package:gemak/pages/industries_pages/chemistry_page.dart';
+import 'package:gemak/pages/industries_pages/dairy_page.dart';
+import 'package:gemak/pages/industries_pages/drink_page.dart';
+import 'package:gemak/pages/industries_pages/energy_page.dart';
+import 'package:gemak/pages/industries_pages/medicine_page.dart';
 import 'package:gemak/pages/product_pages/cip_page.dart';
 import 'package:gemak/pages/product_pages/cooker_page.dart';
 import 'package:gemak/pages/product_pages/deoderizt%C3%B6r_page.dart';
@@ -226,6 +231,18 @@ class _MyAppState extends State<MyApp> {
           case "Teknoice":
             return TeknoIcePage();
           default :return Container();
+        }
+      };
+    });
+    endustrialanlari.forEach((String title) {
+      routesMap["/$title"]= (context){
+        switch (title){
+          case "SÜT ve SÜT ÜRÜNLERİ": return DairyPage();
+          case "GIDA ve İÇECEK": return DrinkPage();
+          case "İLAÇ": return MedicinePage();
+          case "KİMYA": return ChemistryPage();
+          case "ENERJİ": return EnergyPage();
+          default : return Container();
         }
       };
     });
