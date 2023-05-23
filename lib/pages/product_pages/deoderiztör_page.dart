@@ -15,8 +15,11 @@ class DeoPage extends StatelessWidget {
   List<List<String>> yazi1 = [
     ["", "Kapasite: 500 lt/h - 35.000 l/h"],
     ["", "Kullanım alanları:"],
-    ["", "•  Süt"],
-    ["", "•  Krema"],["", "•  Meyve Suyu"],["", "•  Bal"],
+    ["", """
+    •  Süt
+    •  Krema
+    •  Meyve Suyu
+    •  Bal"""],
   ];
 
   @override

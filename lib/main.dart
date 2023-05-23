@@ -7,6 +7,7 @@ import 'package:gemak/pages/industries_pages/dairy_page.dart';
 import 'package:gemak/pages/industries_pages/drink_page.dart';
 import 'package:gemak/pages/industries_pages/energy_page.dart';
 import 'package:gemak/pages/industries_pages/medicine_page.dart';
+import 'package:gemak/pages/kurumsal_page/hr_page.dart';
 import 'package:gemak/pages/product_pages/cip_page.dart';
 import 'package:gemak/pages/product_pages/cooker_page.dart';
 import 'package:gemak/pages/product_pages/deoderizt%C3%B6r_page.dart';
@@ -28,10 +29,18 @@ import 'package:gemak/pages/kurumsal_page/tanitim_film_page.dart';
 import 'package:gemak/pages/product_pages/tank_page.dart';
 import 'package:gemak/pages/kurumsal_page/tarihce_page.dart';
 import 'package:gemak/pages/product_pages/valve_cluster_page.dart';
+import 'package:gemak/pages/rd_pages/innovation_page.dart';
+import 'package:gemak/pages/rd_pages/product_development.dart';
+import 'package:gemak/pages/rd_pages/prototype_product_page.dart';
+import 'package:gemak/pages/rd_pages/rd_proses_page.dart';
 import 'package:gemak/pages/representatives_page/alfa_laval_page.dart';
 import 'package:gemak/pages/representatives_page/bertolli_page.dart';
 import 'package:gemak/pages/representatives_page/others_page.dart';
 import 'package:gemak/pages/representatives_page/teknoice_page.dart';
+import 'package:gemak/pages/solutions_pages/automation_software.dart';
+import 'package:gemak/pages/solutions_pages/installation_commissioning.dart';
+import 'package:gemak/pages/solutions_pages/project_consulting_page.dart';
+import 'package:gemak/pages/solutions_pages/ssh_page.dart';
 import 'package:gemak/utulity/http_helper.dart';
 
 import 'pages/home_page.dart';
@@ -69,7 +78,6 @@ class _MyAppState extends State<MyApp> {
     "Au2mate",
     "Bertoli",
     "Cmt Atomizers",
-    "Endress + Hauser EH",
     "Grundfos",
     "Teknoice"
   ];
@@ -98,6 +106,24 @@ class _MyAppState extends State<MyApp> {
     "KİMYA",
     "ENERJİ"
   ];
+  final List<String> solutions = [
+    "SATIŞ SONRASI HİZMETLER",
+    "PROJE DANIŞMANLIK",
+    "OTOMASYON - YAZILIM",
+    "MONTAJ & DEVREYE ALMA",
+  ];
+  final List<String> rd = [
+    "AR-GE",
+    "Ürün Geliştirme",
+    "Prototip Makine Üretimi",
+    "AR-GE Amaçlı Proses Hatları",
+    "Inovasyon"
+  ];
+  final List<String> hr = [
+    "İnsan Kaynakları Politikamız",
+    "Çalışan Profili",
+    "İşe Alım Süreci"
+  ];
 
   @override
   void didChangeDependencies() {
@@ -122,6 +148,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future getPic() async {
+    await _helper.getPhoto();
     await _helper.getPicData().then((value) {
       _data = value;
       setState(() {});
@@ -148,9 +175,47 @@ class _MyAppState extends State<MyApp> {
               kurumsalList: kurumsalList,
               urunlerList: urunlerList,
               temsilcilikler: temsilcilikler,
-              endustrialanlari: endustrialanlari)
+              endustrialanlari: endustrialanlari,
+              solutions: solutions,
+              rd: rd,
+              hr: hr,
+            )
           : const Center(child: CircularProgressIndicator()),
     };
+    solutions.forEach((String title) {
+      routesMap["/$title"] = (context) {
+        switch (title) {
+          case "SATIŞ SONRASI HİZMETLER":
+            return SshPages();
+          case "PROJE DANIŞMANLIK":
+            return ProjectConsultingPage();
+          case "OTOMASYON - YAZILIM":
+            return AutomationSofwarePage();
+          case "MONTAJ & DEVREYE ALMA":
+            return InstallationPage();
+          default:
+            return Container();
+        }
+      };
+    });
+    rd.forEach((String title) {
+      routesMap["/$title"] = (context) {
+        switch (title) {
+          case "AR-GE":
+            return SshPages();
+          case "Ürün Geliştirme":
+            return ProductDevelopment();
+          case "Prototip Makine Üretimi":
+            return PrototypeProductPage();
+          case "AR-GE Amaçlı Proses Hatları":
+            return RdProsesPage();
+          case "Inovasyon":
+            return InnovationPage();
+          default:
+            return Container();
+        }
+      };
+    });
     urunlerList.forEach((String title) {
       routesMap["/$title"] = (context) {
         switch (title) {
@@ -191,6 +256,20 @@ class _MyAppState extends State<MyApp> {
         }
       };
     });
+    hr.forEach((String title) {
+      routesMap["/$title"] = (context) {
+        switch (title) {
+          case "İnsan Kaynakları Politikamız":
+            return HumanResourcesPage(pageroute: 0);
+          case "Çalışan Profili":
+            return HumanResourcesPage(pageroute: 1);
+          case "İşe Alım Süreci":
+            return HumanResourcesPage(pageroute: 2);
+          default:
+            return Container();
+        }
+      };
+    });
     kurumsalList.forEach((String title) {
       routesMap["/$title"] = (context) {
         switch (title) {
@@ -224,25 +303,30 @@ class _MyAppState extends State<MyApp> {
             return BertoliPage();
           case "Cmt Atomizers":
             return OthersPage(pageroute: 2);
-          case "Endress + Hauser EH":
-            return OthersPage(pageroute: 3);
           case "Grundfos":
             return OthersPage(pageroute: 4);
           case "Teknoice":
             return TeknoIcePage();
-          default :return Container();
+          default:
+            return Container();
         }
       };
     });
     endustrialanlari.forEach((String title) {
-      routesMap["/$title"]= (context){
-        switch (title){
-          case "SÜT ve SÜT ÜRÜNLERİ": return DairyPage();
-          case "GIDA ve İÇECEK": return DrinkPage();
-          case "İLAÇ": return MedicinePage();
-          case "KİMYA": return ChemistryPage();
-          case "ENERJİ": return EnergyPage();
-          default : return Container();
+      routesMap["/$title"] = (context) {
+        switch (title) {
+          case "SÜT ve SÜT ÜRÜNLERİ":
+            return DairyPage();
+          case "GIDA ve İÇECEK":
+            return DrinkPage();
+          case "İLAÇ":
+            return MedicinePage();
+          case "KİMYA":
+            return ChemistryPage();
+          case "ENERJİ":
+            return EnergyPage();
+          default:
+            return Container();
         }
       };
     });

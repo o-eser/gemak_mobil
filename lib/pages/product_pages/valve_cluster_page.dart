@@ -25,13 +25,14 @@ class ValveCluster extends StatelessWidget {
   List<List<String>> yazi1 = [
     ["", "Vana tarlaları, müşterilerin ihtiyacı doğrultusunda tasarlanır. Üretimi ve saha montajı yapılarak otomasyona entegre edilerek devreye alınır."],
     ["", "Gıda tesislerinde tam fonksiyonelliği, üretimde esnekliği, ürün kaybının minimize edilmesini sağlar.  Sistem ihtiyaçları doğrultusunda Alfa Laval mixproof, SSV vanalar ve feedback üniteleri kullanılarak eşsiz çözümler sunulmakta ve sıvı ürünlerin transferinde yüksek hijyenik / aseptik standartlar sağlanmaktadır."],
-    ["", "KULLANIM ALANLARI :"],
-    ["", "•  Süt ve Süt Ürünleri"],
-    ["", "•  Kimya"],
-    ["", "•  Gıda Sanayi"],
-    ["", "•  İlaç Sanayi"],
-    ["", "•  Endüstriyel Tesisler"],
-    ["", "•  Meyve Suyu"]
+    ["", ""],
+    ["KULLANIM ALANLARI :", """
+    •  Süt ve Süt Ürünleri
+    •  Kimya
+    •  Gıda Sanayi
+    •  İlaç Sanayi
+    •  Endüstriyel Tesisler
+    •  Meyve Suyu"""],
   ];
 
   @override

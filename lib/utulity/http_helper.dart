@@ -7,45 +7,39 @@ abstract class Helper {
   List<SecondSlideModel> secondSlides = [];
   List<NewsModel> newsList = [];
   List<SatisModel> satisList = [];
-  String vidUrl="";
+  List<String> picList = [];
+  String vidUrl = "";
 
-  Future req();Future req1();
+  Future req(String url);
 
-  Future<bool> getPicData();Future<bool> getVideoUrl();
+  Future<bool> getPicData();
+
+  Future<bool> getVideoUrl();
+
+  Future<bool> getPhoto();
 
   String? firstSlidesHtml;
   String? secondSlidesHtml;
   String? newsData;
   String? satislarData;
-  String? httpData;String? httpVideoData;
-  String httpDataPre = "";String httpVideoDataPre = "";
+  String? httpData;
+  String? httpVideoData;
+  String httpDataPre = "";
+  String httpVideoDataPre = "";
   String url = "https://www.gemak.com.tr/";
   String videoUrl = "https://player.vimeo.com/video/276818433";
+  String picUrl = "https://www.gemak.com.tr/galeri";
+  String? httpPicData;
+  String httpPicDataPre = "";
 }
 
 class HttpHelper extends Helper {
   @override
-  Future req() async {
+  Future req(String url) async {
     http.Response response = await http.get(Uri.parse(url));
     try {
       if (response.statusCode == 200) {
-        httpData = response.body
-            .replaceAll("\n", "")
-            .replaceAll("\t", "")
-            .replaceAll("  ", "");
-      } else {}
-    } catch (e) {
-      if (kDebugMode) {
-        print("$e");
-      }
-    }
-  }
-  @override
-  Future req1() async {
-    http.Response response = await http.get(Uri.parse(videoUrl));
-    try {
-      if (response.statusCode == 200) {
-        httpVideoData = response.body
+        return response.body
             .replaceAll("\n", "")
             .replaceAll("\t", "")
             .replaceAll("  ", "");
@@ -59,7 +53,7 @@ class HttpHelper extends Helper {
 
   @override
   Future<bool> getPicData() async {
-    await req();
+    httpData = await req(url);
     if (httpDataPre != httpData) {
       httpDataPre = httpData!;
       firstSlides = [];
@@ -72,8 +66,7 @@ class HttpHelper extends Helper {
       firstSlidesHtml = slideMatch.group(1);
       RegExp firstSlideFind = RegExp(
           '''<div class="carousel-item"><a href="(.*?)"><img class="bd-placeholder-img img-fluid" src="(.*?)" alt="(.*?)"></a>(.*?)</div>''');
-      Iterable<Match> firstSlidesMatch =
-          firstSlideFind.allMatches(firstSlidesHtml!);
+      Iterable<Match> firstSlidesMatch = firstSlideFind.allMatches(firstSlidesHtml!);
       for (Match slide in firstSlidesMatch) {
         String spicLink;
         String spic = "https://www.gemak.com.tr${slide.group(2)}";
@@ -87,10 +80,9 @@ class HttpHelper extends Helper {
       }
 
       // Second slides finder
-      RegExp secondSlidesFind = RegExp(
-          """<section class="about">(.*?)></section><section class="news "><""");
-      Match secondSlidesMatch =
-          secondSlidesFind.firstMatch(httpDataPre) as Match;
+      RegExp secondSlidesFind =
+          RegExp("""<section class="about">(.*?)></section><section class="news "><""");
+      Match secondSlidesMatch = secondSlidesFind.firstMatch(httpDataPre) as Match;
       secondSlidesHtml = secondSlidesMatch.group(1);
       Iterable<Match> secondSlide = RegExp(
               """<li data-thumb="(.*?)"><a href="(.*?)"><img src="(.*?)" style="width: 100%" alt="(.*?)" /><p>(.*?)</p></a></li>""")
@@ -101,8 +93,7 @@ class HttpHelper extends Helper {
             title = slide2.group(4)!,
             picLink = "https://www.gemak.com.tr${slide2.group(2)}",
             description = slide2.group(5)!;
-        secondSlides
-            .add(SecondSlideModel(pic, sPic, title, picLink, description));
+        secondSlides.add(SecondSlideModel(pic, sPic, title, picLink, description));
       }
 
       // News data fınder
@@ -128,8 +119,8 @@ class HttpHelper extends Helper {
         newsList.add(NewsModel(nPic, nTitle, "", nDate));
       }
       // Gemak ile üretin
-      RegExp satislarFinder = RegExp(
-          """<section class="front-paralax text-center">(.*?)</section>""");
+      RegExp satislarFinder =
+          RegExp("""<section class="front-paralax text-center">(.*?)</section>""");
       satislarData = satislarFinder.firstMatch(httpDataPre)?.group(1);
       satisList.add(SatisModel(
           "",
@@ -146,28 +137,45 @@ class HttpHelper extends Helper {
         String buttonTitle = satis.group(3)!;
         String buttonLink = satis.group(4)!;
         String description = satis.group(5)!;
-        satisList
-            .add(SatisModel(link, pic, buttonTitle, buttonLink, description));
+        satisList.add(SatisModel(link, pic, buttonTitle, buttonLink, description));
       }
-
-
-
     }
     return true;
   }
-  @override
-  Future<bool> getVideoUrl()async {
 
-    await req1();
+  @override
+  Future<bool> getVideoUrl() async {
+    httpVideoData = await req(videoUrl);
     if (httpVideoDataPre != httpVideoData) {
       httpVideoDataPre = httpVideoData!;
-      RegExp rareVideoUrl=RegExp("""<script>window.playerConfig(.*?)</script>""");
-      Match rareVideoUrlMatch=rareVideoUrl.firstMatch(httpVideoDataPre) as Match;
-      String rareVideoData=rareVideoUrlMatch.group(1)!;
-      RegExp videoUrl=RegExp(""""profile":"175","width":1920,"height":1080,"mime":"video/mp4","fps":25,"url":"(.*?)","cdn":"akamai_interconnect","quality":"1080p","id":""");
-      Match videoUrlMatch=videoUrl.firstMatch(rareVideoData) as Match;
-      String videoUrlData=videoUrlMatch.group(1)!;
-      vidUrl=videoUrlData;
+      RegExp rareVideoUrl = RegExp("""<script>window.playerConfig(.*?)</script>""");
+      Match rareVideoUrlMatch = rareVideoUrl.firstMatch(httpVideoDataPre) as Match;
+      String rareVideoData = rareVideoUrlMatch.group(1)!;
+      RegExp videoUrl = RegExp(
+          """"profile":"175","width":1920,"height":1080,"mime":"video/mp4","fps":25,"url":"(.*?)","cdn":"akamai_interconnect","quality":"1080p","id":""");
+      Match videoUrlMatch = videoUrl.firstMatch(rareVideoData) as Match;
+      String videoUrlData = videoUrlMatch.group(1)!;
+      vidUrl = videoUrlData;
+    }
+    return true;
+  }
+
+  @override
+  Future<bool> getPhoto() async {
+    httpPicData = await req(picUrl);
+    if (httpPicDataPre != httpPicData) {
+      httpPicDataPre = httpPicData!;
+      RegExp rarePicUrl = RegExp(
+          """<div class="page-gallery row" style="margin: 0 -15px">(.*?)</div></div>""");
+      Match rarePicUrlMatch = rarePicUrl.firstMatch(httpPicDataPre) as Match;
+      String rarePicData = rarePicUrlMatch.group(1)!;
+      Iterable<Match> picUrl = RegExp(
+              """<div class="gallery-item col-md-4"> <a data-fancybox="gallery" data-width="1500" data-height="900" href="(.*?)" title="Şirket Galerisi" ><img class="d-block " src="(.*?)" alt="Şirket Galerisi"></a> </div>""")
+          .allMatches(rarePicData);
+      for (Match picUrl in picUrl) {
+        String link = "https://www.gemak.com.tr${picUrl.group(1)}";
+        picList.add(link);
+      }
     }
     return true;
   }

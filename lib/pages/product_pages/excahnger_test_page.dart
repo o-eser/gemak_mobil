@@ -14,18 +14,19 @@ class ExchangerTestPage extends StatelessWidget {
     ],
     [
       "Gemak Eşanjör Test Hizmetini Neden Tercih Etmelisiniz?",
-      "•  Profesyoneldir; Sızıntı yapan ya da yapma ihtimali olan plakalı veya borulu eşanjörlerinizin mümkün olan en hızlı şekilde yüksek performansla tekrar çalışmasını sağlar."
+      """
+      •  Profesyoneldir; Sızıntı yapan ya da yapma ihtimali olan plakalı veya borulu eşanjörlerinizin mümkün olan en hızlı şekilde yüksek performansla tekrar çalışmasını sağlar.•  Tespit Uzmanıdır; Gözle görülemeyecek kadar küçük kılcal sızıntı odaklarını, korozyonu ve mikroskobik çatlakları eşanjörün sökülmesine gerek kalmadan tespit eder.
+      •  Hızlıdır; Eşanjörünüzün bükülüğüne ve üniteye bağlı olarak 15 dakika gibi kısa bir sürede gerekli analizleri yapar.
+      •  Güvenilirdir; Test esnasında kullanılan hidrojen ve azot gaz karışımı sayesinde sıvıların nüfus edemediği noktalara bile kolaylıkla erişebilir. Kullanılan gazların tamamı gıda endüstrisinde kullanılmaya uygundur.
+      •  Hijyeniktir; Zararlı kimyasalların veya boyaların eşanjörünüze bulaşmasını engeller. Test sonrası detaylı CIP temizliğine gerek kalmaz.
+      •  Hassastır; İşlem esnasında eşanjörünüzün plakalarını ve contalarını zorlamaz, aşındırma yapmaz.
+      •  Ekonomiktir; Eşanjörün sökülmesine gerek duyulmadığı için zamandan ve paradan tasarruf etmenizi sağlar. Günler süren servis ve bakım-onarım işlemlerini en kısa sürede bitirmenize yardımcı olur, üretim hatlarındaki duraklama zamanını azaltır.
+      •  Proaktiftir; Olası çatlakları ve sızıntı riskini öngörebildiğinden olası eşanjör arızalarına erkenden önlem almanız için zaman kazandırır.
+      •  Kullanıcı Dostudur; Her boyut ve alandaki eşanjörlerde kolaylıkla kullanılabilir.
+      •  Çözümleri Kalıcıdır; Ürün ve sıvı karışım problemi yaşamadan olası çatlak ve sızıntı odaklarını tespit edebildiğinden eşanjörünüzü daha uzun süre, maksimum verimle kullanmanıza olanak tanır.
+      •  Çevre Dostudur; Helyum gibi doğada bulunması ve kullanması zor olan gazlar yerine doğada bulunan hidrojen ve nitrojen gibi çevreye zarar vermeyen gazlar kullanılır.
+      """
     ],
-    ["", "•  Tespit Uzmanıdır; Gözle görülemeyecek kadar küçük kılcal sızıntı odaklarını, korozyonu ve mikroskobik çatlakları eşanjörün sökülmesine gerek kalmadan tespit eder."],
-    ["", "•  Hızlıdır; Eşanjörünüzün bükülüğüne ve üniteye bağlı olarak 15 dakika gibi kısa bir sürede gerekli analizleri yapar."],
-    ["", "•  Güvenilirdir; Test esnasında kullanılan hidrojen ve azot gaz karışımı sayesinde sıvıların nüfus edemediği noktalara bile kolaylıkla erişebilir. Kullanılan gazların tamamı gıda endüstrisinde kullanılmaya uygundur."],
-    ["", "•  Hijyeniktir; Zararlı kimyasalların veya boyaların eşanjörünüze bulaşmasını engeller. Test sonrası detaylı CIP temizliğine gerek kalmaz."],
-    ["", "•  Hassastır; İşlem esnasında eşanjörünüzün plakalarını ve contalarını zorlamaz, aşındırma yapmaz."],
-    ["", "•  Ekonomiktir; Eşanjörün sökülmesine gerek duyulmadığı için zamandan ve paradan tasarruf etmenizi sağlar. Günler süren servis ve bakım-onarım işlemlerini en kısa sürede bitirmenize yardımcı olur, üretim hatlarındaki duraklama zamanını azaltır."],
-    ["", "•  Proaktiftir; Olası çatlakları ve sızıntı riskini öngörebildiğinden olası eşanjör arızalarına erkenden önlem almanız için zaman kazandırır."],
-    ["", "•  Kullanıcı Dostudur; Her boyut ve alandaki eşanjörlerde kolaylıkla kullanılabilir."],
-    ["", "•  Çözümleri Kalıcıdır; Ürün ve sıvı karışım problemi yaşamadan olası çatlak ve sızıntı odaklarını tespit edebildiğinden eşanjörünüzü daha uzun süre, maksimum verimle kullanmanıza olanak tanır."],
-    ["", "•  Çevre Dostudur; Helyum gibi doğada bulunması ve kullanması zor olan gazlar yerine doğada bulunan hidrojen ve nitrojen gibi çevreye zarar vermeyen gazlar kullanılır."],
     ["","Eşanjörlerinizin ve proseslererinizin durumunu öğrenmek için hemen Gemak Servis Ekibi ile iletişime geçebilirsiniz. Gemak Servis Ekibi alanında uzman kadrosu ile müşterimizin tüm ekipman ve sistemlerden en yüksek verimi alması için özveriyle çalışmaktadır. Devreye alma, eğitim, kontrol, arıza tespiti ve onarım gibi konularda yüksek bilgi birikimleri ile hem ekipman başında uygulamalı hem de ihtiyaç durumunda uzaktan bağlantı ile müşterilerimize hizmet vermektedir. "],
     ["","Başta plakalı eşanjörler olmak üzere, borulu eşanjörler ve UHT sistemler olmak üzere tüm proses ekipmanlarınızdaki kaça veya kaçak riski taşıyan kılcal çatlaklar için Gemak Servis Ekibimiz ile gemak@gemak.com.tr mail adresimizden veya +90 0312 641 32 52 numaralı telefondan iletişime geçebilirsiniz."],
 

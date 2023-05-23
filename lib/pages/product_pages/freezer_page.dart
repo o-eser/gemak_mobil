@@ -49,10 +49,10 @@ class FreezerPage extends StatelessWidget {
     ["", "Makineye dahil bir adet standart yedek parça seti."],
   ];
   List<List<String>> yazi1 = [
-    ["", "Kapasite: 300 lt/h - 400 lt/h - 600 lt/h - 800 lt/h - 1200 lt/h - 1600 lt/h "],
-    ["", "Kullanım alanları:"],
-    ["", "•  Endüstriyel Tip Dondurma"],
-    ["", "•  Kahramanmaraş Tipi Dondurma"],
+    ["Kapasite: ", "300 lt/h - 400 lt/h - 600 lt/h - 800 lt/h - 1200 lt/h -1600 lt/h "],
+    ["Kullanım alanları:", """
+    •  Endüstriyel Tip Dondurma
+    •  Kahramanmaraş Tipi Dondurma"""],
   ];
 
   @override

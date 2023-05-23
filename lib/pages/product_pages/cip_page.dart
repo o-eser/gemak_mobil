@@ -18,22 +18,23 @@ class CipPage extends StatelessWidget {
       "",
       "Tam otomatik CIP üniteleri, PLC kontrollü ve tüm sistem ile 5 basınç hattına kadar tasarlanabilir. GEMAK CIP modülleri temizleme süresini, kimyasal sıcaklığını, akışını ve konsantrasyonunu otomatik olarak kontrol eder. GEMAK CIP modülündeki kimyasal konsantrasyonunun ve sıvıların sınıflandırılmasının kontrolü bir iletkenlik ileticisi kullanılarak yapılır."
     ],
-    ["","•  Üretim öncesi ve sonrası tank, ve proses ekipmanları iç yüzeylerinin temizlenmesine yönelik bir basınç hattından beş basınç hattına kadar birçok seçenek mevcuttur."],
-    ["","•  Ayrıca, Mobil CIP üniteleri de mevcuttur.                                          "],
-    ["","•  Sistem, sıcaklık, basınç, iletkenlik sensörleri ve debi ölçer ile donatılmıştır."],
-    ["","•  Bu sensörler ile sistem otomatik olarak kontrol edilmektedir. Sistem paslanmaz çelik PLC elektrik panosu ile sunulmaktadır."]
+    ["","""
+    •  Üretim öncesi ve sonrası tank, ve proses ekipmanları iç yüzeylerinin temizlenmesine yönelik bir basınç hattından beş basınç hattına kadar birçok seçenek mevcuttur.
+    •  Ayrıca, Mobil CIP üniteleri de mevcuttur.
+    •  Sistem, sıcaklık, basınç, iletkenlik sensörleri ve debi ölçer ile donatılmıştır.
+    •  Bu sensörler ile sistem otomatik olarak kontrol edilmektedir. Sistem paslanmaz çelik PLC elektrik panosu ile sunulmaktadır."""],
   ];
   List<List<String>> yazi1=[["","Kapasite: 500 - 60.000 lt/h"],
     ["","KULLANIM ALANLARI :"],
-    ["","•  Süt ve Süt Mamulleri"],
-    ["","•  Süt ve Süt Mamulleri"],
-    ["","•  Gıda Tesisleri"],
-    ["","•  Endüstriyel Tesisler"],
-    ["","•  Meyve Suyu Tesisleri"],
-    ["","•  İlaç ve Kozmetik Endüstrisi"],
-    ["","•  Kimya Endüstrisi"],
-    ["","•  Su"],
-    ["","•  İşlenmiş Gıdalar"]
+    ["","""
+    •  Süt ve Süt Mamulleri
+    •  Gıda Tesisleri
+    •  Endüstriyel Tesisler
+    •  Meyve Suyu Tesisleri
+    •  İlaç ve Kozmetik Endüstrisi
+    •  Kimya Endüstrisi
+    •  Su
+    •  İşlenmiş Gıdalar"""],
   ];
 
   @override

@@ -13,16 +13,15 @@ class SeperatorPage extends StatelessWidget {
     ],
     [
       "ÖZELLİKLERİ",
-      "•  Otomatik CIP entegrasyonu için tasarlanmış kendi kendini temizleme"
+      """
+      •  Otomatik CIP entegrasyonu için tasarlanmış kendi kendini temizleme
+      •  Krema seperatörlerinde dahili manuel geri basınç kontrolü ve süt yağı standardizasyonu için manuel vana
+      •  Paslanmaz çelik üretim
+      •  Düşük enerji tüketimi
+      •  Optimum çalışma koşulları
+      •  Katıların doğru tahliyesine olanak sağlayan, zaman kontrollü ayar
+      """
     ],
-    [
-      "",
-      "•  Krema seperatörlerinde dahili manuel geri basınç kontrolü ve süt yağı standardizasyonu için manuel vana"
-    ],
-    ["", "•  Paslanmaz çelik üretim"],
-    ["", "•  Düşük enerji tüketimi"],
-    ["", "•  Optimum çalışma koşulları"],
-    ["", "•  Katıların doğru tahliyesine olanak sağlayan, zaman kontrollü ayar"],
   ];
   List<List<String>> yazi1 = [
     [

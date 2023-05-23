@@ -21,6 +21,10 @@ class HomePage extends StatefulWidget {
   List<String> urunlerList;
   List<String> temsilcilikler;
   List<String> endustrialanlari;
+  List<String> solutions;
+  List<String> rd;
+  List<String> hr;
+
   HomePage(
       {Key? key,
       required this.firstSlides,
@@ -30,7 +34,10 @@ class HomePage extends StatefulWidget {
       required this.kurumsalList,
       required this.urunlerList,
       required this.temsilcilikler,
-      required this.endustrialanlari})
+      required this.endustrialanlari,
+      required this.solutions,
+      required this.rd,
+      required this.hr})
       : super(key: key);
 
   @override
@@ -39,6 +46,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final bool _customTileTrailing = false;
+  late List<Map> draweList = [
+    {"label": "KURUMSAL", "item": widget.kurumsalList},
+    {"label": "İNSAN KAYNAKLARI", "item": widget.hr},
+    {"label": "ÜRÜNLERİMİZ", "item": widget.urunlerList},
+    {"label": "TEMSİLCİLİKLERİMİZ", "item": widget.temsilcilikler},
+    {"label": "ENDÜSTRİLER", "item": widget.endustrialanlari},
+    {"label": "ÇÖZÜMLER", "item": widget.solutions},
+    {"label": "AR-GE", "item": widget.rd},
+  ];
 
   @override
   void dispose() {
@@ -109,47 +125,39 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: Drawer(
-        child: ListView(
-          children: [
-            buildDrawerHeader(),
-            CustomExpansionTile(
-                label: "KURUMSAL", isExpanded: _customTileTrailing, item: widget.kurumsalList),
-            CustomExpansionTile(
-                label: "ÜRÜNLERİMİZ", isExpanded: _customTileTrailing, item: widget.urunlerList),
-            CustomExpansionTile(
-                label: "TEMSİLCİLİKLERİMİZ",
+        child: CustomScrollView(slivers: [
+          SliverToBoxAdapter(
+            child: buildDrawerHeader(),
+          ),
+          SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+            return CustomExpansionTile(
+                label: draweList[index]["label"],
                 isExpanded: _customTileTrailing,
-                item: widget.temsilcilikler),
-            CustomExpansionTile(
-                label: "ENDÜSTRİ ALANLARI",
-                isExpanded: _customTileTrailing,
-                item: widget.endustrialanlari)
-          ],
-        ),
+                item: draweList[index]["item"]);
+          }, childCount: draweList.length))
+        ]),
       ),
     );
   }
 
-
-
   DrawerHeader buildDrawerHeader() {
     return DrawerHeader(
-              padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.only(left: 50, right: 50),
-                    child: const Icon(
-                      Icons.phone,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 50, right: 50),
-                    child: const Icon(Icons.location_on_outlined),
-                  ),
-                ],
-              ));
-  }}
-
-
+        padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 50, right: 50),
+              child: const Icon(
+                Icons.phone,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(left: 50, right: 50),
+              child: const Icon(Icons.location_on_outlined),
+            ),
+          ],
+        ));
+  }
+}

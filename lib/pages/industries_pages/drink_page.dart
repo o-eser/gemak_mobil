@@ -14,38 +14,34 @@ class DrinkPage extends StatelessWidget {
     ],
   ];
   List<List<String>> yazi1 = [
-    ["Ürettiğimiz Ürünler:", "•  Holder ve Proses tankları,"],
-    [
-      "",
-      "•  Yüksek Isı Kısa Süre (HTST) ve Ultra Yüksek Isı (UHT) süt pastörizasyon ve standardizasyon sistemleri,"
-    ],
-    ["", "•  Enzim sistemleri,"],
-    ["", "•  Buharlaştırma sistemleri,"],
-    ["", "•  Filtrasyon hatları,"],
-    ["", "•  Konsantrasyon hatları,"],
-    ["", "•  Yerinde temizlik (CIP) sistemleri,"],
+    ["Ürettiğimiz Ürünler:", """
+    •  Holder ve Proses tankları,
+    •  Yüksek Isı Kısa Süre (HTST) ve Ultra Yüksek Isı (UHT) süt pastörizasyon ve standardizasyon sistemleri,
+    •  Enzim sistemleri,
+    •  Buharlaştırma sistemleri,
+    •  Filtrasyon hatları,
+    •  Konsantrasyon hatları,
+    •  Konsantrasyon hatları,
+    •  Yerinde temizlik (CIP) sistemleri,
+    """],
   ];
   List<List<String>> yazi2 = [
     [
       "Tedarik Ettiğimiz Ürünler:",
-      "•  Presleme sistemleri,"
+      """
+      •  Presleme sistemleri,
+      •  Temizleme makinaları,
+      •  Ayırma makinaları,
+      •  Komple laboratuvar ve bağlantı ekipmanları."""
     ],
-    ["", "•  Temizleme makinaları,"],
-    ["", "•  Ayırma makinaları,"],
-    ["", "•  Komple laboratuvar ve bağlantı ekipmanları."],
   ];
   List<List<String>> yazi3 = [
     [
       "Sunduğumuz Hizmetler:",
-      "•  Müşterilerimizin kapasite, özel ihtiyaç ve büyüme planlarına göre her türlü sıvı gıda tesisi çözümleri sunuyoruz."
-    ],
-    [
-      "",
-      "•  AR-GE ekibimiz ve mühendislerimiz güncel teknolojileri kullanarak tüm uygulamalar için ürün kaybının en aza indirgenmesini sağlar."
-    ],
-    [
-      "",
-      "•  Periyodik bakım paketleri, yedek parçalar ve teknik destek içeren kapsamlı bir satış sonrası hizmet yelpazesiyle yatırımınızdan yüksek getiri almanızı sağlıyoruz."
+      """
+      •  Müşterilerimizin kapasite, özel ihtiyaç ve büyüme planlarına göre her türlü sıvı gıda tesisi çözümleri sunuyoruz.
+      •  AR-GE ekibimiz ve mühendislerimiz güncel teknolojileri kullanarak tüm uygulamalar için ürün kaybının en aza indirgenmesini sağlar. 
+      •  Periyodik bakım paketleri, yedek parçalar ve teknik destek içeren kapsamlı bir satış sonrası hizmet yelpazesiyle yatırımınızdan yüksek getiri almanızı sağlıyoruz."""
     ],
   ];
 

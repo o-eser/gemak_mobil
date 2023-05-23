@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget customListTile(BuildContext context, String label) {
+Widget customListTile(BuildContext context, String label, ) {
   return InkWell(
     onTap: () => Navigator.pushNamed(context, "/$label"),
     child: ListTile(

@@ -14,24 +14,24 @@ class EnergyPage extends StatelessWidget {
     ],
   ];
   List<List<String>> yazi1 = [
-    ["Alfa Laval Plakalı Eşanjörler:", "•  Plakalardaki akışın iyileştirilmesiyle genel ısı transferini arttırır,"],
-    [
-      "",
-      "•  Asgari enerji tüketimi ile azami verim elde eder,"
-    ],
-    ["", "•  Az yer kaplayan kompakt bir ekipmandır,"],
-    ["", "•  Esnek bir tasarıma sahiptir ve servis ile bakım işlemlerinin yapılması kolaydır,"],
-    ["", "•  Isıtma, soğutma, ısı geri kazanımı, evaporasyon ve kondenzasyon görevlerinde kullanılır,"],
-    ["", "•  HVAC, soğutma, motor yağı soğutma kimyasal işlemler ve enerji üretimi gibi daha ağır proseslerde kullanılabilir."],
-    ["", "•  Yerinde temizlik (CIP) sistemleri,"],
+    ["Alfa Laval Plakalı Eşanjörler:", """
+    •  Plakalardaki akışın iyileştirilmesiyle genel ısı transferini arttırır,
+    •  Asgari enerji tüketimi ile azami verim elde eder,
+    •  Az yer kaplayan kompakt bir ekipmandır,
+    •  Esnek bir tasarıma sahiptir ve servis ile bakım işlemlerinin yapılması kolaydır,
+    •  Isıtma, soğutma, ısı geri kazanımı, evaporasyon ve kondenzasyon görevlerinde kullanılır,
+    •  HVAC, soğutma, motor yağı soğutma kimyasal işlemler ve enerji üretimi gibi daha ağır proseslerde kullanılabilir.
+    •  Yerinde temizlik (CIP) sistemleri,"""],
   ];
   List<List<String>> yazi2 = [
     [
       "",
       "Pompa çözümleri için dünya çapında bir lider olan Grundfos ekipmanlarını tedarik ediyoruz."
     ],
-    ["Grundfos pompaları:", "•  Su çözümlerinin enerji verimliliğini artırmaya yardımcı olacak eşsiz bir fırsat sunar,"],
-    ["", "•  Altyapı yetersizliği ve CO2 emisyonunun giderek artması gibi sorunlara yönelik kaliteli çözümler sunar."],
+    ["Grundfos pompaları:", """
+    •  Su çözümlerinin enerji verimliliğini artırmaya yardımcı olacak eşsiz bir fırsat sunar,
+    •  Altyapı yetersizliği ve CO2 emisyonunun giderek artması gibi sorunlara yönelik kaliteli çözümler sunar.
+    """],
   ];
 
   @override

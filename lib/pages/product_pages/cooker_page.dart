@@ -20,24 +20,26 @@ class CookerPage extends StatelessWidget {
     ]
   ];
   List<List<String>> yazi1 = [
-    ["", "•  Buharlı Pişirme"],
-    ["", "•  Buzlu Su veya Chiller yoluyla Soğutma"],
-    ["", "•  Vakumlu Pişirme veya Soğutma"],
-    ["", "•  Homojenizasyon Kafası"],
-    ["", "•  Steril Ürün Tahliye Vanası"],
-    ["", "•  Kazıyıcılı Karıştırıcı"],
-    ["", "•  Çırpıcı Kafalar"],
+    ["", """
+    •  Buharlı Pişirme
+    •  Buzlu Su veya Chiller yoluyla Soğutma
+    •  Vakumlu Pişirme veya Soğutma
+    •  Homojenizasyon Kafası
+    •  Steril Ürün Tahliye Vanası
+    •  Kazıyıcılı Karıştırıcı
+    •  Çırpıcı Kafalar"""],
     ["", "KULLANIM ALANLARI :"],
-    ["", "•  Reçel ve Türevleri"],
-    ["", "•  Marshmellow"],
-    ["", "•  İnvert Şurup"],
-    ["", "•  Karamel"],
-    ["", "•  Sos"],
-    ["", "•  Süt ve Süt Ürünleri"],
-    ["", "•  Kek"],
-    ["", "•  Krema"],
-    ["", "•  Puding"],
-    ["", "•  Mayonez"]
+    ["", """
+    •  Reçel ve Türevleri
+    •  Marshmellow
+    •  İnvert Şurup
+    •  Karamel
+    •  Sos
+    •  Süt ve Süt Ürünleri
+    •  Kek
+    •  Krema
+    •  Puding
+    •  Mayonez"""],
   ];
 
   @override

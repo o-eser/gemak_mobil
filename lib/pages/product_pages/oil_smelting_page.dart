@@ -17,15 +17,16 @@ class OilSmeltingPage extends StatelessWidget {
     ["", "Ürün Girişi : Yağ blokları"],
     ["","Hacim : 200 lt. - 6.000 lt."],
     ["","Kapasite : 100 kg/h - 8.000 kg/h arasında üretilmektedir."],
-    ["","Aksesuarlar"],
-    ["", "•  Karıştırıcı"],
-    ["", "•  Alt, üst seviye sensörleri"],
-    ["", "•  Sıcaklık transmiteri"],
-    ["", "•  360° dönen CIP başlıkları"],
-    ["", "•  Sisteme entegreli, vakum kırıcılı, pnömatik açılan ön ve arka kapaklar."],
-    ["", "•  Yağ eritme ünitesi üzerine monte edilmiş, borulu tip eşanjörü, sirkülasyon pompaları, genleşme tüpü, hava atma, su ikmali, buhar kontrol kumanda ve borulamasının bulunan 2 grup sıcak su hazırlama ünitesi."],
-    ["", "•  Su, buhar ve kondens ekipmanları."],
-    ["", "•  Yağ bloklarının aktarımını sağlamak İçin tekerlekli, rulo konveyör ünite, paslanmaz çelik profiller üzerine montajlı bir şekilde üretilmiştir. Paslanmaz Çelik Rulo Konveyör: Yağ blok aktarımını kolaylaştırmak için tekerleklere sahip paslanmaz çelik rulo konveyör"]
+    ["Aksesuarlar", """
+    •  Karıştırıcı
+    •  Alt, üst seviye sensörleri
+    •  Sıcaklık transmiteri
+    •  360° dönen CIP başlıkları
+    •  Sisteme entegreli, vakum kırıcılı, pnömatik açılan ön ve arka kapaklar.
+    •  Yağ eritme ünitesi üzerine monte edilmiş, borulu tip eşanjörü, sirkülasyon pompaları, genleşme tüpü, hava atma, su ikmali, buhar kontrol kumanda ve borulamasının bulunan 2 grup sıcak su hazırlama ünitesi.
+    •  Su, buhar ve kondens ekipmanları.
+    •  Yağ bloklarının aktarımını sağlamak İçin tekerlekli, rulo konveyör ünite, paslanmaz çelik profiller üzerine montajlı bir şekilde üretilmiştir. Paslanmaz Çelik Rulo Konveyör: Yağ blok aktarımını kolaylaştırmak için tekerleklere sahip paslanmaz çelik rulo konveyör
+    """],
   ];
 
   @override

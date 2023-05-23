@@ -18,11 +18,12 @@ class RibbonBlenderPage extends StatelessWidget {
   List<List<String>> yazi1 = [
     ["", "Kapasite: 300 lt - 3.000 lt"],
     ["", "Katı / katı, katı / sıvı, sıvı / sıvı ürünlerin homojen karıştırılması için kullanılır. Özel tasarım karıştırıcısı ile hassas ürünlerin yapısını bozmadan homojen olarak karışımını sağlar. AISI 304 - 316 kalite paslanmaz çelik sac ve profilden imal edilmiştir. TIG kaynağı metoduyla birleştirilmiştir."],
-    ["", "KULLANIM ALANLARI :"],["", "•  Gıda Sanayi"],
-    ["", "•  İlaç Sanayi"],
-    ["", "•  Sivil Patlayıcı"],
-    ["", "•  Labne Hatları"],
-    ["", "•  Meyveli Yoğurt"],
+    ["", ""],["KULLANIM ALANLARI :", """
+    •  Gıda Sanayi
+    •  İlaç Sanayi
+    •  Sivil Patlayıcı
+    •  Labne Hatları
+    •  Meyveli Yoğurt"""],
   ];
 
   @override

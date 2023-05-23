@@ -10,7 +10,6 @@ class OthersPage extends StatelessWidget {
   List<List<String>> pageDetail = [["https://www.gemak.com.tr/uploads/pages/andritz.jpg","Andritz"],
     ["https://www.gemak.com.tr/uploads/pages/logo-au2mate.png","Automate"],
     ["https://www.gemak.com.tr/uploads/pages/7331.jpg","Cmt Atomizers"],
-    ["https://www.gemak.com.tr/uploads/pages/519107.jpg","Endress + Hauser EH"],
     ["https://www.gemak.com.tr/uploads/pages/8968.png","Grundfos"]
   ];
 

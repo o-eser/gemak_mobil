@@ -16,25 +16,24 @@ class MedicinePage extends StatelessWidget {
 
   ];
   List<List<String>> yazi1 = [
-    ["Çözümlerimiz:", "•  Ürün transferi ve dozlama,"],
-    [
-      "",
-      "•  Isı transferi,"
-    ],
-    ["", "•  Depolama ve transfer sistemleri,"],
-    ["", "•  Fermentasyon,"],
-    ["", "•  Mekanik ayırma,"],
-    ["", "•  Homojenizasyon,"],
-    ["","Otomasyon,"],
-    ["", "•  Yerinde temizlik (CIP) sistemleri,"],
+    ["Çözümlerimiz:", """
+    •  Ürün transferi ve dozlama,
+    •  Isı transferi,
+    •  Depolama ve transfer sistemleri,
+    •  Fermentasyon,
+    •  Mekanik ayırma,
+    •  Homojenizasyon,
+    •  Otomasyon,
+    •  Yerinde temizlik (CIP) sistemleri,"""],
   ];
   List<List<String>> yazi2 = [
     [
       "Başlıca Hizmetlerimiz:",
-      "•  Gemak, hammaddelerin sürekli işlenmesi için ekipman tasarlayıp, üretip devreye almaktadır."
+      """
+      •  Gemak, hammaddelerin sürekli işlenmesi için ekipman tasarlayıp, üretip devreye almaktadır.
+      •  Kişiye özel çözümler sunma yetkinliğimiz, ilaç endüstrisindeki müşterilerimizin karmaşık ve çok özel proses tasarım gereksinimlerini karşılamamızı sağlamaktadır.
+      •  İlaç endüstrisi için kesin gereklilikleri ve imalat kalitesi kurallarını yerine getirme konusunda deneyim ve yeteneklere sahiptir."""
     ],
-    ["", "•  Kişiye özel çözümler sunma yetkinliğimiz, ilaç endüstrisindeki müşterilerimizin karmaşık ve çok özel proses tasarım gereksinimlerini karşılamamızı sağlamaktadır."],
-    ["", "•  İlaç endüstrisi için kesin gereklilikleri ve imalat kalitesi kurallarını yerine getirme konusunda deneyim ve yeteneklere sahiptir."],
   ];
 
   @override
