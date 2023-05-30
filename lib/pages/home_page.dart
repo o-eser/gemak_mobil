@@ -1,6 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gemak/utulity/openurl.dart';
 import 'package:gemak/wigdets/firstslide.dart';
 import 'package:gemak/wigdets/footer.dart';
 import 'package:gemak/wigdets/kesfedin_widget.dart';
@@ -8,7 +8,6 @@ import 'package:gemak/wigdets/newswidget.dart';
 import 'package:gemak/wigdets/satislar.dart';
 import 'package:gemak/wigdets/secondslide.dart';
 import 'package:gemak/wigdets/tiles.dart';
-
 import '../utulity/models.dart';
 import '../wigdets/buildCustomWidget.dart';
 
@@ -24,6 +23,7 @@ class HomePage extends StatefulWidget {
   List<String> solutions;
   List<String> rd;
   List<String> hr;
+  List<String> gallery;
 
   HomePage(
       {Key? key,
@@ -37,7 +37,8 @@ class HomePage extends StatefulWidget {
       required this.endustrialanlari,
       required this.solutions,
       required this.rd,
-      required this.hr})
+      required this.hr,
+      required this.gallery})
       : super(key: key);
 
   @override
@@ -45,6 +46,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey _drawerKey = GlobalKey();
+
   final bool _customTileTrailing = false;
   late List<Map> draweList = [
     {"label": "KURUMSAL", "item": widget.kurumsalList},
@@ -53,8 +56,25 @@ class _HomePageState extends State<HomePage> {
     {"label": "TEMSİLCİLİKLERİMİZ", "item": widget.temsilcilikler},
     {"label": "ENDÜSTRİLER", "item": widget.endustrialanlari},
     {"label": "ÇÖZÜMLER", "item": widget.solutions},
-    {"label": "AR-GE", "item": widget.rd},
+    {"label": "AR-GE", "item": widget.rd},{"label": "GALERİ", "item": widget.gallery},
   ];
+  double drawerWidth = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        drawerWidth = getDrawerWidth();
+      });
+    });
+  }
+
+  double getDrawerWidth() {
+    final RenderBox? renderBox =
+        _drawerKey.currentContext?.findRenderObject() as RenderBox?;
+    return renderBox?.size.width ?? 0;
+  }
 
   @override
   void dispose() {
@@ -64,6 +84,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _drawerKey,
       appBar: buildAppBar(),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -124,7 +145,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      drawer: Drawer(
+      endDrawer: Drawer(
         child: CustomScrollView(slivers: [
           SliverToBoxAdapter(
             child: buildDrawerHeader(),
@@ -135,29 +156,92 @@ class _HomePageState extends State<HomePage> {
                 label: draweList[index]["label"],
                 isExpanded: _customTileTrailing,
                 item: draweList[index]["item"]);
-          }, childCount: draweList.length))
+          }, childCount: draweList.length)),
+          SliverToBoxAdapter(
+            child: buildInkWell("Online Eşanjör Satış", "https://esanjorsatis.com/"),
+          ),
+          SliverToBoxAdapter(
+            child: buildInkWell(
+                "Online Pompa Satış", "https://www.gemak.com.tr/pompa-satis"),
+          ),
+          SliverToBoxAdapter(
+            child: buildInkWell(
+                "Online Atık Su Sistemleri Satış", "https://flowell.com.tr/"),
+          )
         ]),
       ),
     );
   }
 
+  InkWell buildInkWell(String title, String link) {
+    return InkWell(
+      child: Card(
+          elevation: 5,
+          color: Colors.deepOrange,
+          child: SizedBox(
+            height: 40,
+            child: Center(
+              child: Text(title, style: const TextStyle(color: Colors.white)),
+            ),
+          )),
+      onTap: () => openURL("link"),
+    );
+  }
+
   DrawerHeader buildDrawerHeader() {
+    String phone = "+903126413252";
+    String location =
+        "https://www.google.com/maps/place/GEMAK+GIDA+END.+MAK.+VE+T%C4%B0C.+A.%C5%9E./@39.792496,32.442489,15z/data=!4m6!3m5!1s0x14d31d26ac838581:0x3cd187fe6134458!8m2!3d39.7924961!4d32.4424893!16s%2Fg%2F11h_4867h6?hl=tr&entry=ttu";
+    List<String> socialMediaUrl = [
+      "https://www.facebook.com/gemakfoodindustry/",
+      "https://www.linkedin.com/company/gemakfoodindustry/",
+      "https://www.instagram.com/gemakfoodindustry/",
+      "https://www.youtube.com/@gemakfoodindustry6107"
+    ];
+    List<Widget> socialMediaIcon = [
+      Icon(Icons.facebook_outlined,color: Color(0xff1877F2),),
+      Icon(FontAwesomeIcons.linkedin,color:Color(0xff0A66C2) ,),
+      Icon(FontAwesomeIcons.instagram,color: Color(0xffE4405F),),
+      Icon(FontAwesomeIcons.youtube,color: Color(0xffFF0000),)
+    ];
     return DrawerHeader(
-        padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-        child: Row(
+        padding: const EdgeInsets.all(5),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: const EdgeInsets.only(left: 50, right: 50),
-              child: const Icon(
-                Icons.phone,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                drawerWidgets(() => launchPhoneCall(phone), Icon(Icons.phone),
+                    drawerWidth / 8),
+                drawerWidgets(() => launchMaps(location), Icon(Icons.location_on_outlined),
+                    drawerWidth / 8),
+              ],
             ),
-            Container(
-              padding: const EdgeInsets.only(left: 50, right: 50),
-              child: const Icon(Icons.location_on_outlined),
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                drawerWidgets(()=>openURL(socialMediaUrl[0]), socialMediaIcon[0],
+                    drawerWidth / (socialMediaUrl.length * 4.2)),
+                drawerWidgets(()=>openURL(socialMediaUrl[1]), socialMediaIcon[1],
+                    drawerWidth / (socialMediaUrl.length * 4.2)),
+                drawerWidgets(()=>openURL(socialMediaUrl[2]), socialMediaIcon[2],
+                    drawerWidth / (socialMediaUrl.length * 4.2)),
+                drawerWidgets(()=>openURL(socialMediaUrl[3]), socialMediaIcon[3],
+                    drawerWidth / (socialMediaUrl.length * 4.2)),
+              ],
+            )
           ],
         ));
+  }
+
+  Container drawerWidgets(_onTap, Widget _icon, double widht) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 20, left: widht, right: widht, top: 20),
+      child: InkWell(
+        onTap: _onTap,
+        child: _icon,
+      ),
+    );
   }
 }

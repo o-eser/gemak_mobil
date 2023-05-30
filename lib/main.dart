@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gemak/inhwidget.dart';
+import 'package:gemak/pages/gallery_page/23_april_exhibition_page.dart';
+import 'package:gemak/pages/gallery_page/co_gallery.dart';
 import 'package:gemak/pages/industries_pages/chemistry_page.dart';
 import 'package:gemak/pages/industries_pages/dairy_page.dart';
 import 'package:gemak/pages/industries_pages/drink_page.dart';
@@ -61,10 +63,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late String _videoUrl;
-  final HttpHelper _helper = HttpHelper();
+  final GemakProvider gemakProvider = GemakProvider(helper: HttpHelper());
   bool _data = false;
-  bool _data1 = false;
   final List<String> kurumsalList = [
     "HAKKIMIZDA",
     "TARİHÇE",
@@ -124,6 +124,12 @@ class _MyAppState extends State<MyApp> {
     "Çalışan Profili",
     "İşe Alım Süreci"
   ];
+  final List<String> gallery = [
+    "Şirket Galerisi",
+    """2. Geleneksel "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı" Resim Sergisi""",
+    """3. Geleneksel "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı" Resim Sergisi""",
+    """3. Geleneksel "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı" Resim Sergisi""",
+  ];
 
   @override
   void didChangeDependencies() {
@@ -132,27 +138,16 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    getPic();
-    getVideoUrl();
     super.initState();
+    fetchData();
   }
 
-  getVideoUrl() async {
-    await _helper.getVideoUrl();
-    _videoUrl = _helper.vidUrl;
-    if (_videoUrl != "") {
-      setState(() {
-        _data1 = true;
-      });
-    }
-  }
-
-  Future getPic() async {
-    await _helper.getPhoto();
-    await _helper.getPicData().then((value) {
-      _data = value;
-      setState(() {});
+  Future<void> fetchData() async {
+    await gemakProvider.fetchData();
+    setState(() {
+      _data = true;
     });
+    // Veriler alındıktan sonra yapılacak diğer işlemler
   }
 
   @override
@@ -168,10 +163,10 @@ class _MyAppState extends State<MyApp> {
     final Map<String, WidgetBuilder> routesMap = {
       "/": (context) => _data
           ? HomePage(
-              firstSlides: _helper.firstSlides,
-              secondSlides: _helper.secondSlides,
-              newsList: _helper.newsList,
-              satisList: _helper.satisList,
+              firstSlides: gemakProvider.data.firstSlides,
+              secondSlides: gemakProvider.data.secondSlides,
+              newsList: gemakProvider.data.newsList,
+              satisList: gemakProvider.data.satisList,
               kurumsalList: kurumsalList,
               urunlerList: urunlerList,
               temsilcilikler: temsilcilikler,
@@ -179,14 +174,34 @@ class _MyAppState extends State<MyApp> {
               solutions: solutions,
               rd: rd,
               hr: hr,
+              gallery: gallery,
             )
           : const Center(child: CircularProgressIndicator()),
     };
+    gallery.forEach((String title) {
+      routesMap["/$title"] = (context) {
+        switch (title) {
+          case "Şirket Galerisi":
+            return CompanyGallery(photoList: gemakProvider.data.photoList);
+          case """2. Geleneksel "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı" Resim Sergisi""":
+            return SecondExhibitionPage(
+                photoList: gemakProvider.data.exhibitionPhotoList);
+          case """3. Geleneksel "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı" Resim Sergisi""":
+            return ThirdExhibitionPage(
+                photoList: gemakProvider.data.thirdExhibitionPhotoList);
+          case """3. Geleneksel "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı" Resim Sergisi""":
+            return FourthExhibitionPage(
+                photoList: gemakProvider.data.fourthExhibitionPhotoList);
+          default:
+            return Container();
+        }
+      };
+    });
     solutions.forEach((String title) {
       routesMap["/$title"] = (context) {
         switch (title) {
           case "SATIŞ SONRASI HİZMETLER":
-            return SshPages();
+            return CompanyGallery(photoList: gemakProvider.data.photoList);
           case "PROJE DANIŞMANLIK":
             return ProjectConsultingPage();
           case "OTOMASYON - YAZILIM":
@@ -282,8 +297,8 @@ class _MyAppState extends State<MyApp> {
           case "ÇEVRE POLİTİKASI":
             return IsgPage();
           case "KURUMSAL TANITIM FİLMİ":
-            return _data1
-                ? TanitimFilmi(_videoUrl)
+            return _data
+                ? TanitimFilmi(gemakProvider.data.videoUrl)
                 : const Center(child: CircularProgressIndicator());
           default:
             return Container();
