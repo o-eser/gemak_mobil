@@ -1,6 +1,14 @@
 # gemak
 
-A new Flutter project.
+I developed the mobile application for my company to learn the fundamentals of Flutter and enhance my personal growth. This application dynamically retrieves news, announcements, and images from gemak.com.tr website, ensuring that the application stays up-to-date whenever the site is updated. It's worth highlighting that this is achieved without using REST services; instead, the website's source code is processed using the RegExp class to create widgets.
+
+This approach allows us to maintain a synchronized content with the website. Any updates made on gemak.com.tr site are instantly reflected in the application, ensuring that users always receive the latest and accurate information.
+
+By utilizing the RegExp class to process the website's source code, we achieve a flexible structure. This enables us to dynamically fetch and display various content while creating a user-friendly interface. We can format and present the news, announcements, and images in a structured manner according to our preferences.
+
+This method reduces the dependency on REST services and improves the application's performance. Fetching data directly from the website's source code eliminates unnecessary network requests, resulting in a faster user experience.
+
+The development of this application has been a significant milestone in my journey of learning Flutter. It has allowed me to solidify my foundational Flutter skills and explore a different approach to data retrieval. Through self-learning and problem-solving, I successfully completed the application. I am now more enthusiastic to work on further projects and delve into new technologies. Uncovering the power and flexibility of Flutter continues to propel me forward in my development journey.
 
 ## Getting Started
 
