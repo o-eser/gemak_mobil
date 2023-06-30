@@ -10,6 +10,7 @@ import 'package:gemak/pages/industries_pages/drink_page.dart';
 import 'package:gemak/pages/industries_pages/energy_page.dart';
 import 'package:gemak/pages/industries_pages/medicine_page.dart';
 import 'package:gemak/pages/kurumsal_page/hr_page.dart';
+import 'package:gemak/pages/news_page.dart';
 import 'package:gemak/pages/product_pages/cip_page.dart';
 import 'package:gemak/pages/product_pages/cooker_page.dart';
 import 'package:gemak/pages/product_pages/deoderizt%C3%B6r_page.dart';
@@ -147,7 +148,6 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _data = true;
     });
-    // Veriler alındıktan sonra yapılacak diğer işlemler
   }
 
   @override
@@ -177,6 +177,7 @@ class _MyAppState extends State<MyApp> {
               gallery: gallery,
             )
           : const Center(child: CircularProgressIndicator()),
+      "/newspage":(context)=> NewsPage(newsList: gemakProvider.data.newsData,)
     };
     gallery.forEach((String title) {
       routesMap["/$title"] = (context) {

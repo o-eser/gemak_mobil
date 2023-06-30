@@ -17,6 +17,7 @@ class NewsModel{
 
   NewsModel(this.pic, this.title, this.description, this.date);
 }
+
 class SatisModel{
   final String link , pic,   buttonTitle,   buttonLink, description;
 

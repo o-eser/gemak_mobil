@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gemak/utulity/openurl.dart';
@@ -8,22 +9,23 @@ import 'package:gemak/wigdets/newswidget.dart';
 import 'package:gemak/wigdets/satislar.dart';
 import 'package:gemak/wigdets/secondslide.dart';
 import 'package:gemak/wigdets/tiles.dart';
+import 'package:video_player/video_player.dart';
 import '../utulity/models.dart';
 import '../wigdets/buildCustomWidget.dart';
 
 class HomePage extends StatefulWidget {
-  List<PicSlideModel> firstSlides;
-  List<SecondSlideModel> secondSlides;
-  List<NewsModel> newsList;
-  List<SatisModel> satisList;
-  List<String> kurumsalList;
-  List<String> urunlerList;
-  List<String> temsilcilikler;
-  List<String> endustrialanlari;
-  List<String> solutions;
-  List<String> rd;
-  List<String> hr;
-  List<String> gallery;
+  final List<PicSlideModel> firstSlides;
+  final List<SecondSlideModel> secondSlides;
+  final List<NewsModel> newsList;
+  final List<SatisModel> satisList;
+  final List<String> kurumsalList;
+  final List<String> urunlerList;
+  final List<String> temsilcilikler;
+  final List<String> endustrialanlari;
+  final List<String> solutions;
+  final List<String> rd;
+  final List<String> hr;
+  final List<String> gallery;
 
   HomePage(
       {Key? key,
@@ -47,6 +49,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey _drawerKey = GlobalKey();
+  ChewieController? chewieController;
 
   final bool _customTileTrailing = false;
   late List<Map> draweList = [
@@ -56,7 +59,8 @@ class _HomePageState extends State<HomePage> {
     {"label": "TEMSİLCİLİKLERİMİZ", "item": widget.temsilcilikler},
     {"label": "ENDÜSTRİLER", "item": widget.endustrialanlari},
     {"label": "ÇÖZÜMLER", "item": widget.solutions},
-    {"label": "AR-GE", "item": widget.rd},{"label": "GALERİ", "item": widget.gallery},
+    {"label": "AR-GE", "item": widget.rd},
+    {"label": "GALERİ", "item": widget.gallery},
   ];
   double drawerWidth = 0.0;
 
@@ -68,6 +72,7 @@ class _HomePageState extends State<HomePage> {
         drawerWidth = getDrawerWidth();
       });
     });
+    showVideoPopup(context);
   }
 
   double getDrawerWidth() {
@@ -79,6 +84,34 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     super.dispose();
+    chewieController?.pause();
+    chewieController?.dispose();
+  }
+
+  void showVideoPopup(BuildContext context) {
+    Future.delayed(const Duration(seconds: 2), () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            backgroundColor: const Color(0xFF004A87),
+            insetPadding: const EdgeInsets.all(5),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.width,
+              child: Chewie(
+                controller: chewieController = ChewieController(
+                  aspectRatio: 4 / 3,
+                  videoPlayerController: VideoPlayerController.asset('assets/video.mp4'),
+                  autoPlay: true,
+                  looping: true,
+                ),
+              ),
+            ),
+          );
+        },
+      ).then((value) {chewieController?.pause();
+      chewieController?.dispose();});
+    });
   }
 
   @override
@@ -184,7 +217,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(title, style: const TextStyle(color: Colors.white)),
             ),
           )),
-      onTap: () => openURL("link"),
+      onTap: () => openURL(link),
     );
   }
 
@@ -199,10 +232,22 @@ class _HomePageState extends State<HomePage> {
       "https://www.youtube.com/@gemakfoodindustry6107"
     ];
     List<Widget> socialMediaIcon = [
-      Icon(Icons.facebook_outlined,color: Color(0xff1877F2),),
-      Icon(FontAwesomeIcons.linkedin,color:Color(0xff0A66C2) ,),
-      Icon(FontAwesomeIcons.instagram,color: Color(0xffE4405F),),
-      Icon(FontAwesomeIcons.youtube,color: Color(0xffFF0000),)
+      const Icon(
+        Icons.facebook_outlined,
+        color: Color(0xff1877F2),
+      ),
+      const Icon(
+        FontAwesomeIcons.linkedin,
+        color: Color(0xff0A66C2),
+      ),
+      const Icon(
+        FontAwesomeIcons.instagram,
+        color: Color(0xffE4405F),
+      ),
+      const Icon(
+        FontAwesomeIcons.youtube,
+        color: Color(0xffFF0000),
+      )
     ];
     return DrawerHeader(
         padding: const EdgeInsets.all(5),
@@ -212,22 +257,22 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                drawerWidgets(() => launchPhoneCall(phone), Icon(Icons.phone),
-                    drawerWidth / 8),
-                drawerWidgets(() => launchMaps(location), Icon(Icons.location_on_outlined),
-                    drawerWidth / 8),
+                drawerWidgets(
+                    () => launchPhoneCall(phone), const Icon(Icons.phone), drawerWidth / 8),
+                drawerWidgets(() => launchMaps(location),
+                    const Icon(Icons.location_on_outlined), drawerWidth / 8),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                drawerWidgets(()=>openURL(socialMediaUrl[0]), socialMediaIcon[0],
+                drawerWidgets(() => openURL(socialMediaUrl[0]), socialMediaIcon[0],
                     drawerWidth / (socialMediaUrl.length * 4.2)),
-                drawerWidgets(()=>openURL(socialMediaUrl[1]), socialMediaIcon[1],
+                drawerWidgets(() => openURL(socialMediaUrl[1]), socialMediaIcon[1],
                     drawerWidth / (socialMediaUrl.length * 4.2)),
-                drawerWidgets(()=>openURL(socialMediaUrl[2]), socialMediaIcon[2],
+                drawerWidgets(() => openURL(socialMediaUrl[2]), socialMediaIcon[2],
                     drawerWidth / (socialMediaUrl.length * 4.2)),
-                drawerWidgets(()=>openURL(socialMediaUrl[3]), socialMediaIcon[3],
+                drawerWidgets(() => openURL(socialMediaUrl[3]), socialMediaIcon[3],
                     drawerWidth / (socialMediaUrl.length * 4.2)),
               ],
             )
@@ -235,12 +280,12 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-  Container drawerWidgets(_onTap, Widget _icon, double widht) {
+  Container drawerWidgets(onTap, Widget icon, double widht) {
     return Container(
       padding: EdgeInsets.only(bottom: 20, left: widht, right: widht, top: 20),
       child: InkWell(
-        onTap: _onTap,
-        child: _icon,
+        onTap: onTap,
+        child: icon,
       ),
     );
   }

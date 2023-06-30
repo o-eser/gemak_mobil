@@ -1,15 +1,12 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../../wigdets/buildCustomWidget.dart';
-import '../../wigdets/footer.dart';
 
 class HakkimizdaPage extends StatelessWidget {
   HakkimizdaPage({Key? key}) : super(key: key);
-  String title = "HAKKIMIZDA";
-  String pic = "https://www.gemak.com.tr/uploads/editor/buyuk_424c215d.jpg";
-  List<List<String>> yazi = [
+  final String title = "HAKKIMIZDA";
+  final String pic = "https://www.gemak.com.tr/uploads/editor/buyuk_424c215d.jpg";
+  final List<List<String>> yazi = [
     [
       "",
       "Temelleri 1969 yılında atılan GEMAK, özellikle süt ve süt ürünleri tesislerine yönelik ekipman üretimi, otomasyon ve anahtar teslim tesis kurulmasında öncü kuruluştur."

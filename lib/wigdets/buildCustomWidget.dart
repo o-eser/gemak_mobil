@@ -4,18 +4,26 @@ import 'footer.dart';
 
 AppBar buildAppBar() {
   return AppBar(
-    toolbarHeight: 80,
+    backgroundColor: const Color(0xff054f7d),
+    toolbarHeight: 90,
     title: Padding(
-      padding: const EdgeInsets.only(left: 15, right: 15),
-      child: Container(
-          padding: const EdgeInsets.only(top: 5, bottom: 5),
-          margin: const EdgeInsets.only(top: 10),
-          alignment: Alignment.centerLeft,
-          height: 70,
-          child: Image.asset(
-            "images/logo.png",
-            height: 60,
-          )),
+      padding: const EdgeInsets.only(right: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ColorFiltered(
+            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+            child: Image.asset(
+              "images/logo.png",
+              height: 60,
+            ),
+          ),
+          CircularButton(
+            text: "Hemen Teslim",
+            onPressed: () {},
+          ),
+        ],
+      ),
     ),
   );
 }
@@ -39,7 +47,7 @@ class PageTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      color: Theme.of(context).backgroundColor,
+      color: Theme.of(context).colorScheme.background,
       padding: PagePadding().titlePadding,
       child: SizedBox(
           width: double.maxFinite,
@@ -55,15 +63,13 @@ class PageTitle extends StatelessWidget {
 class PagePadding {
   double padd;
   late EdgeInsets widgetPadding;
-  PagePadding({this.padd=10}){
-    widgetPadding =
-    EdgeInsets.only(bottom: padd, top: padd, right: 25, left: 25);
+
+  PagePadding({this.padd = 10}) {
+    widgetPadding = EdgeInsets.only(bottom: padd, top: padd, right: 25, left: 25);
   }
+
   EdgeInsets titlePadding = const EdgeInsets.all(10);
-
-
-
-
+  EdgeInsets shortPadding = const EdgeInsets.all(5);
 }
 
 class CustomTextView extends StatelessWidget {
@@ -93,13 +99,13 @@ class CustomTextView extends StatelessWidget {
                   ? PageTitle(
                       title: title,
                     )
-                  : Stack(),
-              if (index == 0 && pic != "") Image.network(pic) else Stack(),
+                  : const Stack(),
+              if (index == 0 && pic != "") Image.network(pic) else const Stack(),
               Container(
                   padding: PagePadding().widgetPadding,
                   alignment: Alignment.centerLeft,
                   child: yazi[index][0] == ""
-                      ? Stack()
+                      ? const Stack()
                       : Text(
                           yazi[index][0],
                           style: TextStyle(
@@ -119,13 +125,13 @@ class CustomTextView extends StatelessWidget {
                         fontSize: Theme.of(context).primaryTextTheme.bodyLarge!.fontSize),
                   )),
               index == yazi.length - 1 && footerIn
-                  ? Column(
-                      children: const [
+                  ? const Column(
+                      children: [
                         CustomDivider(),
                         Footer(),
                       ],
                     )
-                  : Stack(),
+                  : const Stack(),
             ],
           );
         });
@@ -149,7 +155,8 @@ class CustomTextView1 extends StatelessWidget {
   List<List<String>> yazi;
   String title;
   String pic;
-  bool footerIn;bool titleIn;
+  bool footerIn;
+  bool titleIn;
   double textPadding;
 
   CustomTextView1(
@@ -157,8 +164,9 @@ class CustomTextView1 extends StatelessWidget {
       required this.yazi,
       required this.title,
       required this.pic,
-      this.footerIn = true,this.titleIn = true,
-      this.textPadding=10})
+      this.footerIn = true,
+      this.titleIn = true,
+      this.textPadding = 10})
       : super(key: key);
 
   @override
@@ -173,13 +181,13 @@ class CustomTextView1 extends StatelessWidget {
               ? PageTitle(
                   title: title,
                 )
-              : Stack(),
-          if (index == 0 && pic != "") Image.network(pic) else Stack(),
+              : const Stack(),
+          if (index == 0 && pic != "") Image.network(pic) else const Stack(),
           Container(
               padding: PagePadding().widgetPadding,
               alignment: Alignment.centerLeft,
               child: yazi[index][0] == ""
-                  ? Stack()
+                  ? const Stack()
                   : Text(
                       yazi[index][0],
                       style: TextStyle(
@@ -189,7 +197,7 @@ class CustomTextView1 extends StatelessWidget {
                               Theme.of(context).primaryTextTheme.bodyLarge!.fontSize),
                     )),
           Container(
-            alignment: Alignment.centerLeft,
+              alignment: Alignment.centerLeft,
               padding: PagePadding(padd: textPadding).widgetPadding,
               child: Text(
                 textAlign: TextAlign.justify,
@@ -198,13 +206,13 @@ class CustomTextView1 extends StatelessWidget {
                     fontSize: Theme.of(context).primaryTextTheme.bodyLarge!.fontSize),
               )),
           index == yazi.length - 1 && footerIn
-              ? Column(
-                  children: const [
+              ? const Column(
+                  children: [
                     CustomDivider(),
                     Footer(),
                   ],
                 )
-              : Stack(),
+              : const Stack(),
         ],
       );
     }, childCount: yazi.length));
@@ -217,29 +225,72 @@ class PastModelCard extends StatelessWidget {
     required this.pic,
     required this.title,
   });
+
   final String pic;
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    String _pic=pic;
-    String _title=title;
+    String _pic = pic;
+    String _title = title;
     return Column(
       children: [
         Container(
           padding: const EdgeInsets.all(30),
-          child: Image.network(
-              _pic),
+          child: Image.network(_pic),
         ),
         Container(
           padding: const EdgeInsets.all(10),
-          child:  Text(_title,
+          child: Text(_title,
               style: const TextStyle(
                 color: Color(0xFF054F7D),
                 fontSize: 24,
               )),
         ),
       ],
+    );
+  }
+}
+
+class CircularButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+
+  const CircularButton({super.key, required this.text, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 70,
+      height: 70,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: const Color(0xffff6000),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xffff6000).withOpacity(0.4),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(3, 0),
+          ),
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          shape: const CircleBorder(),
+          textStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        child: Text(
+          text,
+        ),
+      ),
     );
   }
 }

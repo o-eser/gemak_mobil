@@ -29,11 +29,13 @@ class FirstNews extends StatelessWidget {
               Container(
                 alignment: Alignment.centerRight,
                 margin: const EdgeInsets.only(right: 25, bottom: 5),
-                child: const Text("Tüm Haberler",
-                    style: TextStyle(
-                      color: Color(0xFF004A87),
-                      fontSize: 15,
-                    )),
+                child: InkWell(onTap: (){Navigator.pushNamed(context, "/newspage");},
+                  child: const Text("Tüm Haberler",
+                      style: TextStyle(
+                        color: Color(0xFF004A87),
+                        fontSize: 15,
+                      )),
+                ),
               ),
               const Divider(
                 height: 10,
