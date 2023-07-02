@@ -10,12 +10,9 @@ This method reduces the dependency on REST services and improves the application
 
 The development of this application has been a significant milestone in my journey of learning Flutter. It has allowed me to solidify my foundational Flutter skills and explore a different approach to data retrieval. Through self-learning and problem-solving, I successfully completed the application. I am now more enthusiastic to work on further projects and delve into new technologies. Uncovering the power and flexibility of Flutter continues to propel me forward in my development journey.
 
-<p align="center">
-  <img src="[your_relative_path_here_number_2_large_name](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/436a037b-2fb8-442b-bed8-193477d64b56)" width="400" alt="">
-</p>
-![Screenshot_20230702_154037](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/436a037b-2fb8-442b-bed8-193477d64b56)
-![Screenshot_20230702_154032](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/1f13224c-8a63-43fa-b2f3-933a0e0cb566)
-![Screenshot_20230702_154012](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/d18a4323-3f5a-445c-a8a5-e69fdab7800b)
+![Screenshot_20230702_154037](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/436a037b-2fb8-442b-bed8-193477d64b56){: width="500" height="300"}
+![Screenshot_20230702_154032](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/1f13224c-8a63-43fa-b2f3-933a0e0cb566){: width="500" height="300"}
+![Screenshot_20230702_154012](https://github.com/osmaneser-esm/gemak_mobil/assets/71600959/d18a4323-3f5a-445c-a8a5-e69fdab7800b){: width="500" height="300"}
 
 
 ## Getting Started
